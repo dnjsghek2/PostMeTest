@@ -1,8 +1,12 @@
 package gpslocation.wonho.example.com.postmetest;
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import gpslocation.wonho.example.com.postmetest.Fragment.CubbyholeFrament;
 import gpslocation.wonho.example.com.postmetest.Fragment.MapFragment;
@@ -12,6 +16,7 @@ import gpslocation.wonho.example.com.postmetest.Fragment.SettingFragment;
 public class TabActivity extends AppCompatActivity {
 
     FragmentTabHost tabHost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,15 +25,15 @@ public class TabActivity extends AppCompatActivity {
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);  //.setup(context, Manager, layout)
 
         tabHost.addTab(tabHost.newTabSpec("di1").setIndicator("지도")
-                ,MapFragment.class, null);
+                , MapFragment.class, null);
 
         tabHost.addTab(tabHost.newTabSpec("id2").setIndicator("히스토리")
-                ,HistoryFragment.class, null);
+                , HistoryFragment.class, null);
 
         tabHost.addTab(tabHost.newTabSpec("id3").setIndicator("보관함")
-                ,CubbyholeFrament.class, null);
+                , CubbyholeFrament.class, null);
 
         tabHost.addTab(tabHost.newTabSpec("id4").setIndicator("설정")
-                ,SettingFragment.class, null);
+                , SettingFragment.class, null);
     }
 }

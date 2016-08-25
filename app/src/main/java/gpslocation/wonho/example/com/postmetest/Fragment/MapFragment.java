@@ -4,12 +4,15 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,6 +50,20 @@ import gpslocation.wonho.example.com.postmetest.R;
                     .findFragmentById(R.id.map_fragment);
             fragment.getMapAsync(this);
             // Inflate the layout for this fragment
+            FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab_click);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Snackbar",Snackbar.LENGTH_SHORT)
+                            .setAction("OK", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(getActivity(), "snackbar button click", Toast.LENGTH_SHORT).show();
+                                }
+                            }).show();
+                }
+            });
+
         }
             return view; //완성된 VIEW return
     }
@@ -71,6 +88,7 @@ import gpslocation.wonho.example.com.postmetest.R;
         GoogleMap map;                            //구글맵 변수
         map = googleMap;
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        Log.d(TAG, "onMapReady");
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
