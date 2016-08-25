@@ -34,6 +34,7 @@ import gpslocation.wonho.example.com.postmetest.R;
     String mProvider = LocationManager.GPS_PROVIDER;    //GPS기반의 위치 제공자
 
     public MapFragment() {
+
     }
 
     @Override
