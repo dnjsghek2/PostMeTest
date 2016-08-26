@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.Toast;
@@ -33,35 +35,13 @@ public class TabActivity extends AppCompatActivity {
                 , CubbyholeFrament.class, null);
         tabHost.addTab(tabHost.newTabSpec("id4").setIndicator("설정")
                 , SettingFragment.class, null);
-        /*
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+    }
 
-            @Override
-            public void onTabChanged(String s) {
-                if (s.equals("id1")) {
-                    toolbar =null;
-                    toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
-                    toolbar.inflateMenu(R.menu.menu_map);
-                    onResume();
-                } else if (s.equals("id2")) {
-                    toolbar =null;
-                    toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
-                    toolbar.inflateMenu(R.menu.menu_history);
-                    onResume();
-                } else if (s.equals("id3")) {
-                    onResume();
-                } else if (s.equals("id4")) {
-                    onResume();
-                }
-            }
-        });
-    }
-*/
-    }
     @Override
-    public void supportInvalidateOptionsMenu() {
-        super.supportInvalidateOptionsMenu();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     protected void onResume() {
         super.onResume();

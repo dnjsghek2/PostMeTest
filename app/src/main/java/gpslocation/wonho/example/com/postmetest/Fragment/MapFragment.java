@@ -11,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -53,12 +55,10 @@ public class MapFragment extends Fragment implements
 
             setHasOptionsMenu(true);
 
-
             FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_click);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                 }
             });
 
@@ -120,9 +120,29 @@ public class MapFragment extends Fragment implements
 
     }
 
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_map, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+    @Override
+    public void onOptionsMenuClosed(Menu menu) {
+        super.onOptionsMenuClosed(menu);
+    }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            inflater.inflate(R.menu.menu_map, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.Search:
+                Toast.makeText(getContext(), "실행됨", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.ok: break;
+            case R.id.cancel: break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
