@@ -5,14 +5,14 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,7 +25,7 @@ import gpslocation.wonho.example.com.postmetest.R;
 /**
  * Created by wonhochoi on 2016. 8. 4..
  */
- public class MapFragment extends Fragment implements
+public class MapFragment extends Fragment implements
         OnMapReadyCallback, GoogleMap.OnCameraMoveListener,
         GoogleMap.OnMapClickListener,         //맵 클릭시 이벤트 처리
         GoogleMap.OnMarkerClickListener,      //마커 클릭시 이벤트 처리
@@ -50,22 +50,20 @@ import gpslocation.wonho.example.com.postmetest.R;
                     .findFragmentById(R.id.map_fragment);
             fragment.getMapAsync(this);
             // Inflate the layout for this fragment
-            FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab_click);
+
+            setHasOptionsMenu(true);
+
+
+            FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_click);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Snackbar.make(view, "Snackbar",Snackbar.LENGTH_SHORT)
-                            .setAction("OK", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Toast.makeText(getActivity(), "snackbar button click", Toast.LENGTH_SHORT).show();
-                                }
-                            }).show();
+
                 }
             });
 
         }
-            return view; //완성된 VIEW return
+        return view; //완성된 VIEW return
     }
 
     @Override
@@ -119,6 +117,12 @@ import gpslocation.wonho.example.com.postmetest.R;
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
+
+    }
+
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_map, menu);
+        super.onCreateOptionsMenu(menu, inflater);
 
     }
 }

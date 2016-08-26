@@ -1,9 +1,12 @@
 package gpslocation.wonho.example.com.postmetest.Fragment;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
@@ -33,6 +36,8 @@ public class HistoryFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        setHasOptionsMenu(true);
+
         mItems = new ArrayList<>(30);
         for (int i = 0; i < 30; i++) {
             mItems.add(String.format("Card number %02d", i));
@@ -58,5 +63,11 @@ public class HistoryFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
 
         return view; //완성된 VIEW return
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_history, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }
