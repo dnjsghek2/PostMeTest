@@ -46,7 +46,7 @@ public class MapFragment extends Fragment implements
     static View view;
     LocationManager mLM;                      //로케이션매니저 변수
     String mProvider = LocationManager.GPS_PROVIDER;    //GPS기반의 위치 제공자
-
+    FloatingActionButton fab;
     public MapFragment() {
 
     }
@@ -62,13 +62,13 @@ public class MapFragment extends Fragment implements
                             .findFragmentById(R.id.map_fragment);
             fragment.getMapAsync(this);
             setHasOptionsMenu(true);
-            FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab_click);
+            fab = (FloatingActionButton) view.findViewById(R.id.fab_click);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     menu.removeItem(R.id.Search);
                     menuInflater.inflate(R.menu.menu_fba, menu);
-
+                    fab.hide();
                 }
             });
         }
@@ -96,9 +96,10 @@ public class MapFragment extends Fragment implements
                 postMeDialog.show();
                 break;
             case R.id.cancel:
-                menu.removeItem(R.id.ok);
-                menu.removeItem(R.id.cancel);
-                menuInflater.inflate(R.menu.menu_map, menu);
+                    menu.removeItem(R.id.ok);
+                    menu.removeItem(R.id.cancel);
+                    menuInflater.inflate(R.menu.menu_map, menu);
+                fab.show();
                 break;
         }
         return super.onOptionsItemSelected(item);
