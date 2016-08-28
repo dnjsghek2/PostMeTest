@@ -18,7 +18,6 @@ import gpslocation.wonho.example.com.postmetest.Fragment.SettingFragment;
 
 public class TabActivity extends AppCompatActivity {
     FragmentTabHost tabHost;
-    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +38,7 @@ public class TabActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         return super.onCreateOptionsMenu(menu);
     }
 
